@@ -67,6 +67,7 @@ function renderProducts(data) {
       </div>
       <div class="when"><b>什么时候可以提：</b>${esc(p.when)}</div>
       <div class="risk">${esc(p.risk)}</div>
+      <a class="product-link" href="${esc(p.id)}.html">查看${esc(p.short)}产品页 →</a>
     </article>`).join('');
 }
 
@@ -150,7 +151,6 @@ function renderPosition(data) {
   const csi = stat('沪深300');
   const cyb = stat('创业板');
   const star = stat('科创50');
-  const eventText = (data.events || []).slice(0, 3).map((e) => `${e.date} ${e.title}`).join('；');
   $('evidence').innerHTML = `
     <article class="evidence-card">
       <span>01 位置</span>
@@ -171,10 +171,10 @@ function renderPosition(data) {
       <em>话术：整体不贵、科技偏贵，别把反弹当反转。</em>
     </article>
     <article class="evidence-card">
-      <span>04 政策 / 事件</span>
-      <b>等数据验证</b>
-      <p>${esc(eventText)}。政策方向是托底，但需要数据验证。</p>
-      <em>话术：事件前后少追涨杀跌。</em>
+      <span>04 政策 / 节点</span>
+      <b>政策托底 + 产品节点</b>
+      <p>政策方向是稳市场、引长期资金；本周重点：11/25 募集截止，2027/1/6 封闭期打开。</p>
+      <em>话术：先看政策方向，再看产品节点，不用天天盯宏观。</em>
     </article>`;
 
   $('scenario-grid').innerHTML = scenarios.map((s) => `
