@@ -17,7 +17,6 @@ function tile(item) {
   const deltaClass = item.deltaText ? 'flat' : trend(item.change);
   return `
     <article class="tile ${item.cls}">
-      <div class="tile-head"><span>${esc(item.group)}</span><span>${esc(item.date || '')}</span></div>
       <div class="tile-label">${esc(item.label)}</div>
       <div class="tile-main"><b>${esc(item.value)}</b><span class="${deltaClass}">${esc(delta)}</span></div>
       ${item.sub ? `<div class="tile-sub"><div>${esc(item.sub)}</div></div>` : ''}
@@ -33,11 +32,11 @@ function renderMarket(data) {
   const fx = m.fx || {};
   const yields = m.yields || [];
   const metrics = [
-    ...a.map((x) => ({ cls: 'a', group: 'A股', label: x.label, value: x.value, change: x.change })),
-    ...hk.map((x) => ({ cls: 'hk', group: '港股', label: x.label, value: x.value, change: x.change })),
-    ...us.map((x) => ({ cls: 'us', group: '美股', label: x.label, value: x.value, change: x.change })),
-    { cls: 'gold', group: '黄金', label: gold.label || 'COMEX黄金', value: gold.value || '—', change: gold.change, sub: `${gold.rmb || ''}${gold.date ? ' · ' + gold.date : ''}`, date: gold.date || '' },
-    { cls: 'fx', group: '汇率', label: fx.label || 'USD/CNY', value: fx.value || '—', change: fx.change, sub: `中间价${fx.date ? ' · ' + fx.date : ''}`, date: fx.date || '' },
+    ...a.map((x) => ({ cls: 'a', label: x.label, value: x.value, change: x.change })),
+    ...hk.map((x) => ({ cls: 'hk', label: '恒生', value: x.value, change: x.change })),
+    ...us.map((x) => ({ cls: 'us', label: x.label === '标普500' ? '标普' : x.label, value: x.value, change: x.change })),
+    { cls: 'gold', label: 'COMEX黄金', value: gold.value || '—', change: gold.change, sub: `${gold.rmb || ''}${gold.date ? ' · ' + gold.date : ''}` },
+    { cls: 'fx', label: 'USD/CNY', value: fx.value || '—', change: fx.change, sub: `中间价${fx.date ? ' · ' + fx.date : ''}` },
   ];
   $('market-grid').innerHTML = metrics.map(tile).join('');
 
