@@ -23,7 +23,7 @@
 
   <main>
     <section class="hero">
-      <div class="eyebrow">2026.11.10 · 周二 · 给理财经理的 3 分钟</div>
+      <div class="eyebrow">2026.11.10 · 周二</div>
       <h1>今天，先看这 9 个数</h1>
       <p class="summary" id="summary">—</p>
       <div class="meta"><span>数据时间 <b id="updated">—</b></span><span class="dot"></span><span>数据日 <b id="data-date">—</b></span></div>
@@ -34,15 +34,51 @@
     <section class="section">
       <div class="section-head">
         <div><div class="eyebrow">READ</div><h2>今天市场怎么读</h2></div>
-        <p>只留对客户沟通有用的三句话。</p>
       </div>
       <div class="read-grid" id="read-grid"></div>
     </section>
 
     <section class="section">
       <div class="section-head">
+        <div><div class="eyebrow">CLIENT TALK</div><h2>市场下跌时，怎么跟客户说</h2></div>
+      </div>
+      <div class="confidence">
+        <div class="confidence-main">
+          <p class="quote">“各位老师好，最近市场下跌明显。今年夏天，我们总觉得这次不一样，开始远离低估值，对 AI 叙事上头；最近震荡加剧，又开始极度悲观。其实每次都一样，不变的是人性和周期。今天用三张图回顾：资金面、估值、基本面，看看当前市场在历史什么位置。”</p>
+          <div class="confidence-steps">
+            <div><b>01 先共情</b><p>先承认客户看到下跌，不急着讲产品。</p></div>
+            <div><b>02 讲周期</b><p>“每次都一样，不变的是人性和周期。”</p></div>
+            <div><b>03 看位置</b><p>资金面、估值、基本面，三张图讲清楚。</p></div>
+            <div><b>04 落产品</b><p>能承受波动→嘉俊；想稳→益鑫；只想保本→都不适合。</p></div>
+          </div>
+        </div>
+        <aside class="confidence-note">
+          <b>使用提示</b>
+          <p>这段话是参考，不是统一话术。实际要结合客户风偏、仓位和资金期限；不承诺收益、不预测点位。</p>
+        </aside>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-head">
+        <div><div class="eyebrow">MARKET MAP</div><h2>现在市场在什么位置</h2></div>
+      </div>
+      <div class="chart-card">
+        <div class="chart-head"><b>近 1 年走势</b><span>起点 = 100</span></div>
+        <div class="chart-legend" id="chart-legend"></div>
+        <svg class="market-chart" id="market-chart" viewBox="0 0 720 260" role="img" aria-label="沪深300、创业板指、科创50、上证指数近一年走势"></svg>
+        <div class="chart-foot">数据来自公开指数日线；归一化处理，仅用于观察相对强弱，不代表未来。</div>
+      </div>
+      <div class="stat-strip" id="index-stats"></div>
+      <div class="position-grid" id="position-grid"></div>
+      <div class="viewpoint-grid" id="viewpoint"></div>
+      <div class="scenario-grid" id="scenario-grid"></div>
+      <p class="chart-note">不是预测点位，是准备预案：涨了怎么讲、跌了怎么接、客户问起来怎么答。</p>
+    </section>
+
+    <section class="section">
+      <div class="section-head">
         <div><div class="eyebrow">MATCH</div><h2>两只产品，怎么接客户</h2></div>
-        <p>先说适合谁、不适合谁，再谈产品。</p>
       </div>
       <div class="product-grid" id="products"></div>
     </section>
@@ -50,7 +86,6 @@
     <section class="section">
       <div class="section-head">
         <div><div class="eyebrow">TALK TRACK</div><h2>对客话术：客户原话怎么接</h2></div>
-        <p>先接住客户，再给结论；每句都留一句风险提示。</p>
       </div>
       <div class="talk-grid" id="talk"></div>
     </section>
@@ -58,7 +93,6 @@
     <section class="section">
       <div class="section-head">
         <div><div class="eyebrow">MANAGER</div><h2>基金经理，一句话记住</h2></div>
-        <p>只用公开资料摘要，正式对外话术需合规审核。</p>
       </div>
       <div class="manager-grid" id="managers"></div>
     </section>
@@ -66,7 +100,6 @@
     <section class="section">
       <div class="section-head">
         <div><div class="eyebrow">CLIENT Q&amp;A</div><h2>客户最可能问的 3 个问题</h2></div>
-        <p>先给结论，再补一句风险。</p>
       </div>
       <div class="qa-grid" id="qa"></div>
     </section>
@@ -74,7 +107,6 @@
     <section class="section">
       <div class="section-head">
         <div><div class="eyebrow">CALENDAR</div><h2>本周只看 3 个事件</h2></div>
-        <p>不铺日历，只留会影响客户情绪的。</p>
       </div>
       <div class="events" id="events"></div>
     </section>
