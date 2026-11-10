@@ -60,6 +60,7 @@ function renderProducts(data) {
       <div class="product-facts">${(p.facts || []).filter(([k]) => ['类型', '股票仓位', '基金经理'].includes(k)).map(([k, v]) => `${esc(k)} ${esc(v)}`).join(' · ')}</div>
       <div class="one-line">${esc(p.oneLine)}</div>
       <div class="product-script"><span>对客可以这样说</span>${esc(p.script || '')}</div>
+      <div class="product-why"><span>${esc(p.whyLabel || '为什么是它')}</span>${esc(p.why || '')}</div>
       <div class="fit-grid">
         <div class="fit-box"><span>适合谁</span><div class="chips">${(p.fit || []).map((x) => `<span class="chip">${esc(x)}</span>`).join('')}</div></div>
         <div class="fit-box"><span>不适合谁</span><div class="chips">${(p.notFit || []).map((x) => `<span class="chip no">${esc(x)}</span>`).join('')}</div></div>
@@ -78,6 +79,18 @@ function renderTalkTracks(data) {
         <p class="say"><b>可以这样说：</b>${esc(item.say)}</p>
         <p class="avoid"><b>不要这样说：</b>${esc(item.avoid)}</p>
       </div>
+    </article>`).join('');
+}
+
+function renderOpenings(data) {
+  $('openings').innerHTML = (data.openings || []).map((item, index) => `
+    <article class="opening">
+      <span>0${index + 1}</span>
+      <h3>${esc(item.type)}</h3>
+      <p class="state">${esc(item.state)}</p>
+      <div class="opening-line"><b>第一句</b>${esc(item.first)}</div>
+      <div class="opening-line"><b>接下来</b>${esc(item.next)}</div>
+      <div class="opening-line avoid"><b>不要这样说</b>${esc(item.avoid)}</div>
     </article>`).join('');
 }
 
@@ -129,33 +142,40 @@ function renderPosition(data) {
   const y10 = (m.yields || []).find((x) => x.label.includes('10Y')) || {};
   const lpr = m.lpr || {};
   const shibor = m.shibor || {};
-  $('position-grid').innerHTML = `
-    <article class="position-card">
-      <h3>资金面</h3>
-      <ul>
-        <li><span>10Y 国债</span><b>${esc(y10.value || '—')}</b></li>
-        <li><span>LPR 1Y / 5Y</span><b>${esc(lpr['1y'] ?? '—')}% / ${esc(lpr['5y'] ?? '—')}%</b></li>
-        <li><span>Shibor 隔夜</span><b>${esc(shibor.value ?? '—')}%</b></li>
-      </ul>
-    </article>
-    <article class="position-card">
-      <h3>估值</h3>
-      <ul>${valuation.map((x) => `<li><span>${esc(x.label)}</span><b>${esc(x.value)} <small>${esc(x.date)}</small></b></li>`).join('')}</ul>
-    </article>
-    <article class="position-card">
-      <h3>基本面</h3>
-      <ul>${fundamentals.map((x) => `<li><span>${esc(x.label)}</span><b>${esc(x.value)} <small>${esc(x.date)}</small></b></li>`).join('')}</ul>
-    </article>`;
-
   const pe300 = valuation.find((x) => x.label.includes('沪深300'))?.value || '—';
   const peStar = valuation.find((x) => x.label.includes('科创50'))?.value || '—';
   const pmiM = fundamentals.find((x) => x.label.includes('制造业'))?.value || '—';
   const pmiS = fundamentals.find((x) => x.label.includes('非制造业'))?.value || '—';
-  $('viewpoint').innerHTML = `
-    <article class="viewpoint-card"><span>估值</span><b>沪深300 PE ${esc(pe300)}</b><p>科创50 PE ${esc(peStar)}，科技估值偏高；不同指数不可直接比。</p></article>
-    <article class="viewpoint-card"><span>资金</span><b>10Y ${esc(y10.value || '—')}</b><p>LPR ${esc(lpr['1y'] ?? '—')}% / ${esc(lpr['5y'] ?? '—')}%，资金面偏宽松，但继续大幅下行空间有限。</p></article>
-    <article class="viewpoint-card"><span>基本面</span><b>PMI ${esc(pmiM)} / ${esc(pmiS)}</b><p>仍在荣枯线下，盈利验证需要时间，政策仍有发力必要。</p></article>
-    <article class="viewpoint-card"><span>一句话</span><b>震荡市，结构行情</b><p>科技不追高、分批；纯债做底仓。不是预测点位，是准备预案。</p></article>`;
+  const stat = (label) => stats.find((x) => x.label.includes(label)) || {};
+  const csi = stat('沪深300');
+  const cyb = stat('创业板');
+  const star = stat('科创50');
+  const eventText = (data.events || []).slice(0, 3).map((e) => `${e.date} ${e.title}`).join('；');
+  $('evidence').innerHTML = `
+    <article class="evidence-card">
+      <span>01 位置</span>
+      <b>沪深300 ${signed(csi.return_1y)}</b>
+      <p>距 1 年高点 ${signed(csi.from_high)}，最大回撤 ${signed(csi.mdd_1y)}；创业板 ${signed(cyb.return_1y)}，科创50 ${signed(star.return_1y)}。</p>
+      <em>话术：先别猜底，先看跌了多少、跌了多久。</em>
+    </article>
+    <article class="evidence-card">
+      <span>02 资金</span>
+      <b>10Y ${esc(y10.value || '—')}</b>
+      <p>LPR ${esc(lpr['1y'] ?? '—')}% / ${esc(lpr['5y'] ?? '—')}%；Shibor 隔夜 ${esc(shibor.value ?? '—')}%。资金价格不高，但继续大幅下行空间有限。</p>
+      <em>话术：看政策是否继续发力，而不是只看一天。</em>
+    </article>
+    <article class="evidence-card">
+      <span>03 估值 / 基本面</span>
+      <b>沪深300 PE ${esc(pe300)}</b>
+      <p>科创50 PE ${esc(peStar)}，科技估值偏高；PMI ${esc(pmiM)} / ${esc(pmiS)}，仍在荣枯线下。</p>
+      <em>话术：整体不贵、科技偏贵，别把反弹当反转。</em>
+    </article>
+    <article class="evidence-card">
+      <span>04 政策 / 事件</span>
+      <b>等数据验证</b>
+      <p>${esc(eventText)}。政策方向是托底，但需要数据验证。</p>
+      <em>话术：事件前后少追涨杀跌。</em>
+    </article>`;
 
   $('scenario-grid').innerHTML = scenarios.map((s) => `
     <article class="scenario ${esc(s.tone || 'flat')}">
@@ -194,6 +214,7 @@ function init() {
   $('data-date').textContent = data.meta.data_date;
   $('disclaimer').textContent = data.meta.disclaimer;
   renderMarket(data);
+  renderOpenings(data);
   renderPosition(data);
   renderProducts(data);
   renderTalkTracks(data);
