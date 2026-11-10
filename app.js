@@ -80,6 +80,90 @@ function renderTalkTracks(data) {
     </article>`).join('');
 }
 
+function renderPosition(data) {
+  const m = data.market || {};
+  const series = m.series || [];
+  const stats = m.stats || [];
+  const valuation = m.valuation || [];
+  const fundamentals = m.fundamentals || [];
+  const scenarios = m.scenarios || [];
+
+  if (series.length) {
+    const W = 720;
+    const H = 260;
+    const pad = { l: 34, r: 14, t: 14, b: 24 };
+    const values = series.flatMap((s) => s.points.map((p) => p.value));
+    const min = Math.min(...values);
+    const max = Math.max(...values);
+    const span = max - min || 1;
+    const x = (i, n) => pad.l + (W - pad.l - pad.r) * (n <= 1 ? 0 : i / (n - 1));
+    const y = (v) => H - pad.b - (H - pad.t - pad.b) * (v - min) / span;
+    const grid = [0, 1, 2, 3].map((i) => {
+      const gy = pad.t + (H - pad.t - pad.b) * i / 3;
+      const value = max - span * i / 3;
+      return `<line x1="${pad.l}" y1="${gy}" x2="${W - pad.r}" y2="${gy}" stroke="#ddd0be" stroke-width="1" stroke-dasharray="3 4"/><text x="4" y="${gy + 3}" fill="#7a6f62" font-size="9">${value.toFixed(0)}</text>`;
+    }).join('');
+    const lines = series.map((s) => {
+      const pts = s.points.map((p, i) => `${x(i, s.points.length).toFixed(1)},${y(p.value).toFixed(1)}`).join(' ');
+      return `<polyline points="${pts}" fill="none" stroke="${s.color}" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" opacity=".92"/>`;
+    }).join('');
+    const first = series[0]?.points?.[0]?.date || '';
+    const last = series[0]?.points?.[series[0].points.length - 1]?.date || '';
+    $('market-chart').innerHTML = `${grid}${lines}
+      <text x="${pad.l}" y="${H - 6}" fill="#7a6f62" font-size="9">${esc(first)}</text>
+      <text x="${W - pad.r}" y="${H - 6}" fill="#7a6f62" font-size="9" text-anchor="end">${esc(last)}</text>`;
+    $('chart-legend').innerHTML = series.map((s) => {
+      const lastValue = s.points[s.points.length - 1]?.value;
+      return `<span class="legend-item"><span class="legend-dot" style="background:${s.color}"></span>${esc(s.label)} <b>${lastValue?.toFixed(1) ?? '—'}</b></span>`;
+    }).join('');
+  }
+
+  $('index-stats').innerHTML = stats.map((s) => `
+    <div class="stat-card">
+      <span>${esc(s.label)} · 近 1 年</span>
+      <b class="${trend(s.return_1y)}">${signed(s.return_1y)}</b>
+      <small>距 1 年高点 ${signed(s.from_high)} · 最大回撤 ${signed(s.mdd_1y)}</small>
+    </div>`).join('');
+
+  const y10 = (m.yields || []).find((x) => x.label.includes('10Y')) || {};
+  const lpr = m.lpr || {};
+  const shibor = m.shibor || {};
+  $('position-grid').innerHTML = `
+    <article class="position-card">
+      <h3>资金面</h3>
+      <ul>
+        <li><span>10Y 国债</span><b>${esc(y10.value || '—')}</b></li>
+        <li><span>LPR 1Y / 5Y</span><b>${esc(lpr['1y'] ?? '—')}% / ${esc(lpr['5y'] ?? '—')}%</b></li>
+        <li><span>Shibor 隔夜</span><b>${esc(shibor.value ?? '—')}%</b></li>
+      </ul>
+    </article>
+    <article class="position-card">
+      <h3>估值</h3>
+      <ul>${valuation.map((x) => `<li><span>${esc(x.label)}</span><b>${esc(x.value)} <small>${esc(x.date)}</small></b></li>`).join('')}</ul>
+    </article>
+    <article class="position-card">
+      <h3>基本面</h3>
+      <ul>${fundamentals.map((x) => `<li><span>${esc(x.label)}</span><b>${esc(x.value)} <small>${esc(x.date)}</small></b></li>`).join('')}</ul>
+    </article>`;
+
+  const pe300 = valuation.find((x) => x.label.includes('沪深300'))?.value || '—';
+  const peStar = valuation.find((x) => x.label.includes('科创50'))?.value || '—';
+  const pmiM = fundamentals.find((x) => x.label.includes('制造业'))?.value || '—';
+  const pmiS = fundamentals.find((x) => x.label.includes('非制造业'))?.value || '—';
+  $('viewpoint').innerHTML = `
+    <article class="viewpoint-card"><span>估值</span><b>沪深300 PE ${esc(pe300)}</b><p>科创50 PE ${esc(peStar)}，科技估值偏高；不同指数不可直接比。</p></article>
+    <article class="viewpoint-card"><span>资金</span><b>10Y ${esc(y10.value || '—')}</b><p>LPR ${esc(lpr['1y'] ?? '—')}% / ${esc(lpr['5y'] ?? '—')}%，资金面偏宽松，但继续大幅下行空间有限。</p></article>
+    <article class="viewpoint-card"><span>基本面</span><b>PMI ${esc(pmiM)} / ${esc(pmiS)}</b><p>仍在荣枯线下，盈利验证需要时间，政策仍有发力必要。</p></article>
+    <article class="viewpoint-card"><span>一句话</span><b>震荡市，结构行情</b><p>科技不追高、分批；纯债做底仓。不是预测点位，是准备预案。</p></article>`;
+
+  $('scenario-grid').innerHTML = scenarios.map((s) => `
+    <article class="scenario ${esc(s.tone || 'flat')}">
+      <h3>${esc(s.name)}</h3>
+      <p><b>触发：</b>${esc(s.trigger)}</p>
+      <p><b>动作：</b>${esc(s.action)}</p>
+    </article>`).join('');
+}
+
 function renderManagers(data) {
   $('managers').innerHTML = (data.products || []).map((p) => `
     <article class="manager">
@@ -109,6 +193,7 @@ function init() {
   $('data-date').textContent = data.meta.data_date;
   $('disclaimer').textContent = data.meta.disclaimer;
   renderMarket(data);
+  renderPosition(data);
   renderProducts(data);
   renderTalkTracks(data);
   renderManagers(data);
