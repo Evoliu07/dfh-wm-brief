@@ -117,6 +117,10 @@ h1{font-size:46px;line-height:1.3;letter-spacing:-.03em;font-weight:600;margin:1
 .viewpoint-card span{display:block;font-family:var(--font-d);font-size:9px;color:var(--red)}
 .viewpoint-card b{display:block;font-family:var(--font-d);font-size:11.5px;line-height:1.55;margin-top:3px;color:var(--ink)}
 .viewpoint-card p{font-family:var(--font-d);font-size:9.5px;line-height:1.75;color:var(--muted);margin-top:3px}
+.viewpoint-card p b{color:var(--ink2);font-weight:600}
+.broker-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:10px}
+.broker-note{font-family:var(--font-d);font-size:9.5px;line-height:1.8;color:var(--muted);margin-top:10px;padding:10px 12px;border:1px dashed rgba(184,137,47,.4);border-radius:11px;background:rgba(184,137,47,.06)}
+.broker-note b{color:var(--ink2)}
 .scenario-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:10px}
 .scenario{border:1px solid var(--line);border-top:3px solid var(--line);border-radius:11px;background:rgba(255,250,240,.55);padding:12px}
 .scenario.up{border-top-color:var(--red)}
@@ -193,6 +197,7 @@ h1{font-size:46px;line-height:1.3;letter-spacing:-.03em;font-weight:600;margin:1
   .position-grid{grid-template-columns:1fr}
   .scenario-grid{grid-template-columns:1fr}
   .viewpoint-grid{grid-template-columns:1fr 1fr}
+  .broker-grid{grid-template-columns:1fr}
 }
 @media(max-width:600px){
   .page{padding:18px 16px 42px}
