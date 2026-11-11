@@ -63,7 +63,7 @@ function renderProducts(data) {
       </div>
       <div class="product-facts">${(p.facts || []).filter(([k]) => ['类型', '股票仓位', '基金经理'].includes(k)).map(([k, v]) => `${esc(k)} ${esc(v)}`).join(' · ')}</div>
       <div class="one-line">${esc(p.oneLine)}</div>
-      <div class="product-script"><span>对客可以这样说</span>${esc(p.script || '')}</div>
+      <div class="product-script"><span>渠道可以这样说</span>${esc(p.script || '')}</div>
       <div class="product-why"><span>${esc(p.whyLabel || '为什么是它')}</span>${esc(p.why || '')}</div>
       <div class="fit-grid">
         <div class="fit-box"><span>适合谁</span><div class="chips">${(p.fit || []).map((x) => `<span class="chip">${esc(x)}</span>`).join('')}</div></div>
