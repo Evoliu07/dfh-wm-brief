@@ -1,12 +1,12 @@
 window.PORTAL_DATA = {
   "meta": {
-    "updated_at": "2026-11-11 10:05",
+    "updated_at": "2026-11-11 10:35",
     "data_date": "2026-11-11",
     "label": "内部参考 · 待合规审核",
     "disclaimer": "本页仅用于内部学习与渠道沟通参考，不构成投资建议、产品推介或收益承诺。产品信息以基金管理人最新公告、基金合同和招募说明书为准。基金有风险，投资需谨慎。"
   },
   "market": {
-    "summary": "隔夜美股回落，A股震荡，人民币基本稳定，COMEX黄金上涨；今天重点看美国 10 月 CPI。",
+    "summary": "隔夜美股回落，A股震荡，人民币基本稳定，COMEX黄金上涨；关注资金面、政策与产品节点。",
     "yields": [
       {
         "label": "10Y 国债",
@@ -24,25 +24,25 @@ window.PORTAL_DATA = {
     "a": [
       {
         "label": "上证指数",
-        "value": "3658.24",
-        "change": -0.15
+        "value": "3659.24",
+        "change": -0.12
       },
       {
         "label": "深证成指",
-        "value": "11213.90",
-        "change": -0.25
+        "value": "11232.94",
+        "change": -0.08
       },
       {
         "label": "创业板指",
-        "value": "2502.41",
-        "change": 0.32
+        "value": "2512.37",
+        "change": 0.72
       }
     ],
     "hk": [
       {
         "label": "恒生指数",
-        "value": "24375.88",
-        "change": -0.74
+        "value": "24396.76",
+        "change": -0.65
       }
     ],
     "us": [
@@ -64,10 +64,10 @@ window.PORTAL_DATA = {
     ],
     "gold": {
       "label": "COMEX黄金",
-      "value": "4052.77",
+      "value": "4054.87",
       "unit": "美元/盎司",
-      "rmb": "869.68 元/克",
-      "change": 0.56,
+      "rmb": "870.14 元/克",
+      "change": 0.61,
       "date": "11/11"
     },
     "fx": {

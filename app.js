@@ -43,9 +43,14 @@ function renderMarket(data) {
   const aText = a.map((x) => `${x.label} ${signed(x.change)}`).join('，');
   const usText = us.map((x) => `${x.label} ${signed(x.change)}`).join('，');
   const bondText = yields.map((x) => `${x.label} ${x.value}`).join('，');
+  const avg = (arr) => arr.length ? arr.reduce((sum, x) => sum + Number(x.change || 0), 0) / arr.length : 0;
+  const aAvg = avg(a);
+  const usAvg = avg(us);
+  const aTitle = aAvg > 0.5 ? '成长更强' : aAvg > -0.5 ? '分化' : '偏弱';
+  const usTitle = usAvg > 1 ? '隔夜大涨' : usAvg > 0 ? '隔夜偏强' : usAvg > -1 ? '隔夜回落' : '隔夜走弱';
   $('read-grid').innerHTML = `
-    <article class="read"><span>A股</span><b>成长和中小盘更强</b><p>${esc(aText)}。风险偏好回暖，但别把一天当趋势。</p></article>
-    <article class="read"><span>美股</span><b>隔夜大涨，等 CPI</b><p>${esc(usText)}。今晚美国 10 月 CPI 是下一个变量，影响利率、汇率和黄金。</p></article>
+    <article class="read"><span>A股</span><b>${aTitle}</b><p>${esc(aText)}。看结构，不看一天；别把反弹当反转。</p></article>
+    <article class="read"><span>美股</span><b>${usTitle}</b><p>${esc(usText)}。外部风险偏好会影响开盘情绪，但别把一天当趋势。</p></article>
     <article class="read"><span>债市</span><b>利率仍在低位</b><p>${esc(bondText)}。纯债看久期和信用，不要把“纯债”理解成“保本”。</p></article>`;
 }
 
