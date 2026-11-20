@@ -210,12 +210,22 @@ function renderEvents(data) {
     </div>`).join('');
 }
 
+function updateTodayLabel(dateStr) {
+  const el = $('today-label');
+  if (!el || !dateStr) return;
+  const d = new Date(dateStr + 'T00:00:00');
+  if (Number.isNaN(d.getTime())) return;
+  const week = ['日','一','二','三','四','五','六'][d.getDay()];
+  el.textContent = `${d.getFullYear()}.${String(d.getMonth()+1).padStart(2,'0')}.${String(d.getDate()).padStart(2,'0')} · 周${week}`;
+}
+
 function init() {
   const data = window.PORTAL_DATA;
   if (!data) return;
   $('summary').textContent = data.market.summary;
   $('updated').textContent = data.meta.updated_at;
   $('data-date').textContent = data.meta.data_date;
+  updateTodayLabel(data.meta.data_date);
   $('disclaimer').textContent = data.meta.disclaimer;
   renderMarket(data);
   renderOpenings(data);
