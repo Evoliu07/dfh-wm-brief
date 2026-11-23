@@ -1,6 +1,6 @@
 window.PORTAL_DATA = {
   "meta": {
-    "updated_at": "2026-11-23 09:29",
+    "updated_at": "2026-11-23 10:42",
     "data_date": "2026-11-23",
     "label": "内部参考 · 待合规审核",
     "disclaimer": "本页仅用于内部学习与渠道沟通参考，不构成投资建议、产品推介或收益承诺。产品信息以基金管理人最新公告、基金合同和招募说明书为准。基金有风险，投资需谨慎。"
@@ -24,25 +24,25 @@ window.PORTAL_DATA = {
     "a": [
       {
         "label": "上证指数",
-        "value": "3503.52",
-        "change": -0.86
+        "value": "3478.50",
+        "change": -1.56
       },
       {
         "label": "深证成指",
-        "value": "10155.60",
-        "change": -0.98
+        "value": "10137.57",
+        "change": -1.16
       },
       {
         "label": "创业板指",
-        "value": "2195.52",
-        "change": -0.75
+        "value": "2192.11",
+        "change": -0.91
       }
     ],
     "hk": [
       {
         "label": "恒生指数",
-        "value": "22410.80",
-        "change": 0.0
+        "value": "22120.80",
+        "change": -1.29
       }
     ],
     "us": [
@@ -64,17 +64,17 @@ window.PORTAL_DATA = {
     ],
     "gold": {
       "label": "COMEX黄金",
-      "value": "3615.62",
+      "value": "3574.89",
       "unit": "美元/盎司",
-      "rmb": "775.50 元/克",
-      "change": 2.85,
+      "rmb": "767.16 元/克",
+      "change": 1.69,
       "date": "11/23"
     },
     "fx": {
       "label": "USD/CNY 中间价",
-      "value": "6.7131",
-      "change": 0.0,
-      "date": "11/20"
+      "value": "6.7120",
+      "change": -0.02,
+      "date": "11/23"
     },
     "lpr": {
       "1y": 3.0,
