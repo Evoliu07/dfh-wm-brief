@@ -1,6 +1,6 @@
 window.PORTAL_DATA = {
   "meta": {
-    "updated_at": "2026-11-23 15:35",
+    "updated_at": "2026-11-23 16:37",
     "data_date": "2026-11-23",
     "label": "内部参考 · 待合规审核",
     "disclaimer": "本页仅用于内部学习与渠道沟通参考，不构成投资建议、产品推介或收益承诺。产品信息以基金管理人最新公告、基金合同和招募说明书为准。基金有风险，投资需谨慎。"
@@ -41,8 +41,8 @@ window.PORTAL_DATA = {
     "hk": [
       {
         "label": "恒生指数",
-        "value": "22413.26",
-        "change": 0.01
+        "value": "22383.74",
+        "change": -0.12
       }
     ],
     "us": [
@@ -64,10 +64,10 @@ window.PORTAL_DATA = {
     ],
     "gold": {
       "label": "COMEX黄金",
-      "value": "3625.57",
+      "value": "3610.03",
       "unit": "美元/盎司",
-      "rmb": "776.84 元/克",
-      "change": 3.13,
+      "rmb": "773.46 元/克",
+      "change": 2.69,
       "date": "11/23"
     },
     "fx": {
