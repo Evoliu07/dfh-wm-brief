@@ -1,12 +1,12 @@
 window.PORTAL_DATA = {
   "meta": {
-    "updated_at": "2026-11-23 22:54",
-    "data_date": "2026-11-23",
+    "updated_at": "2026-11-24 11:24",
+    "data_date": "2026-11-24",
     "label": "内部参考 · 待合规审核",
     "disclaimer": "本页仅用于内部学习与渠道沟通参考，不构成投资建议、产品推介或收益承诺。产品信息以基金管理人最新公告、基金合同和招募说明书为准。基金有风险，投资需谨慎。"
   },
   "market": {
-    "summary": "隔夜美股大涨，A股偏强，人民币基本稳定，COMEX黄金上涨；关注资金面、政策与产品节点。",
+    "summary": "隔夜美股大涨，A股偏强，人民币基本稳定，COMEX黄金回落；关注资金面、政策与产品节点。",
     "yields": [
       {
         "label": "10Y 国债",
@@ -24,25 +24,25 @@ window.PORTAL_DATA = {
     "a": [
       {
         "label": "上证指数",
-        "value": "3538.95",
-        "change": 0.15
+        "value": "3552.44",
+        "change": 0.38
       },
       {
         "label": "深证成指",
-        "value": "10454.37",
-        "change": 1.93
+        "value": "10542.26",
+        "change": 0.84
       },
       {
         "label": "创业板指",
-        "value": "2280.20",
-        "change": 3.08
+        "value": "2321.53",
+        "change": 1.81
       }
     ],
     "hk": [
       {
         "label": "恒生指数",
-        "value": "22383.74",
-        "change": -0.12
+        "value": "22359.97",
+        "change": -0.11
       }
     ],
     "us": [
@@ -64,17 +64,17 @@ window.PORTAL_DATA = {
     ],
     "gold": {
       "label": "COMEX黄金",
-      "value": "3671.68",
+      "value": "3658.48",
       "unit": "美元/盎司",
-      "rmb": "786.91 元/克",
-      "change": 4.45,
-      "date": "11/23"
+      "rmb": "783.48 元/克",
+      "change": -0.63,
+      "date": "11/24"
     },
     "fx": {
       "label": "USD/CNY 中间价",
-      "value": "6.7120",
-      "change": -0.02,
-      "date": "11/23"
+      "value": "6.7111",
+      "change": -0.01,
+      "date": "11/24"
     },
     "lpr": {
       "1y": 3.0,
@@ -83,8 +83,8 @@ window.PORTAL_DATA = {
     },
     "shibor": {
       "label": "Shibor 隔夜",
-      "value": 1.262,
-      "date": "11/23"
+      "value": 1.274,
+      "date": "11/24"
     },
     "series": [
       {
