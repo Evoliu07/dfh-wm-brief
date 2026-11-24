@@ -1,6 +1,6 @@
 window.PORTAL_DATA = {
   "meta": {
-    "updated_at": "2026-11-24 12:29",
+    "updated_at": "2026-11-24 13:31",
     "data_date": "2026-11-24",
     "label": "内部参考 · 待合规审核",
     "disclaimer": "本页仅用于内部学习与渠道沟通参考，不构成投资建议、产品推介或收益承诺。产品信息以基金管理人最新公告、基金合同和招募说明书为准。基金有风险，投资需谨慎。"
@@ -24,50 +24,50 @@ window.PORTAL_DATA = {
     "a": [
       {
         "label": "上证指数",
-        "value": "3555.49",
-        "change": 0.47
+        "value": "3554.15",
+        "change": 0.43
       },
       {
         "label": "深证成指",
-        "value": "10550.87",
-        "change": 0.92
+        "value": "10519.70",
+        "change": 0.62
       },
       {
         "label": "创业板指",
-        "value": "2323.48",
-        "change": 1.9
+        "value": "2309.92",
+        "change": 1.3
       }
     ],
     "hk": [
       {
         "label": "恒生指数",
-        "value": "22295.94",
-        "change": -0.39
+        "value": "22310.23",
+        "change": -0.33
       }
     ],
     "us": [
       {
         "label": "道琼斯",
-        "value": "49595.31",
-        "change": 3.01
+        "value": "52389.75",
+        "change": 2.15
       },
       {
         "label": "纳斯达克",
-        "value": "24089.56",
-        "change": 6.51
+        "value": "25253.14",
+        "change": 2.74
       },
       {
         "label": "标普500",
-        "value": "7237.17",
-        "change": 4.73
+        "value": "7549.94",
+        "change": 2.35
       }
     ],
     "gold": {
       "label": "COMEX黄金",
-      "value": "3655.63",
+      "value": "3658.21",
       "unit": "美元/盎司",
-      "rmb": "782.90 元/克",
-      "change": -0.71,
+      "rmb": "783.53 元/克",
+      "change": -0.64,
       "date": "11/24"
     },
     "fx": {
