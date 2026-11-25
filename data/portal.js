@@ -1,74 +1,74 @@
 window.PORTAL_DATA = {
   "meta": {
-    "updated_at": "2026-11-24 13:31",
-    "data_date": "2026-11-24",
+    "updated_at": "2026-11-25 08:39",
+    "data_date": "2026-11-25",
     "label": "内部参考 · 待合规审核",
     "disclaimer": "本页仅用于内部学习与渠道沟通参考，不构成投资建议、产品推介或收益承诺。产品信息以基金管理人最新公告、基金合同和招募说明书为准。基金有风险，投资需谨慎。"
   },
   "market": {
-    "summary": "隔夜美股大涨，A股偏强，人民币基本稳定，COMEX黄金回落；关注资金面、政策与产品节点。",
+    "summary": "隔夜美股回落，A股震荡，人民币基本稳定，COMEX黄金回落；关注资金面、政策与产品节点。",
     "yields": [
       {
         "label": "10Y 国债",
         "value": "1.59%",
-        "change": "+0.6bp",
-        "date": "11/23"
+        "change": "-0.1bp",
+        "date": "11/24"
       },
       {
         "label": "30Y 国债",
-        "value": "2.05%",
-        "change": "+0.8bp",
-        "date": "11/23"
+        "value": "2.04%",
+        "change": "-0.5bp",
+        "date": "11/24"
       }
     ],
     "a": [
       {
         "label": "上证指数",
-        "value": "3554.15",
-        "change": 0.43
+        "value": "3548.37",
+        "change": 0.27
       },
       {
         "label": "深证成指",
-        "value": "10519.70",
-        "change": 0.62
+        "value": "10423.60",
+        "change": -0.29
       },
       {
         "label": "创业板指",
-        "value": "2309.92",
-        "change": 1.3
+        "value": "2278.99",
+        "change": -0.05
       }
     ],
     "hk": [
       {
         "label": "恒生指数",
-        "value": "22310.23",
-        "change": -0.33
+        "value": "22205.65",
+        "change": -0.8
       }
     ],
     "us": [
       {
         "label": "道琼斯",
-        "value": "52389.75",
-        "change": 2.15
+        "value": "50018.70",
+        "change": 0.85
       },
       {
         "label": "纳斯达克",
-        "value": "25253.14",
-        "change": 2.74
+        "value": "23733.54",
+        "change": -1.48
       },
       {
         "label": "标普500",
-        "value": "7549.94",
-        "change": 2.35
+        "value": "7201.09",
+        "change": -0.5
       }
     ],
     "gold": {
       "label": "COMEX黄金",
-      "value": "3658.21",
+      "value": "3574.71",
       "unit": "美元/盎司",
-      "rmb": "783.53 元/克",
-      "change": -0.64,
-      "date": "11/24"
+      "rmb": "766.02 元/克",
+      "change": -0.46,
+      "date": "11/25"
     },
     "fx": {
       "label": "USD/CNY 中间价",
@@ -336,8 +336,8 @@ window.PORTAL_DATA = {
             "value": 88.9
           },
           {
-            "date": "11/23",
-            "value": 89.0
+            "date": "11/24",
+            "value": 89.1
           }
         ]
       },
@@ -590,7 +590,7 @@ window.PORTAL_DATA = {
             "value": 75.5
           },
           {
-            "date": "11/23",
+            "date": "11/24",
             "value": 77.8
           }
         ]
@@ -844,8 +844,8 @@ window.PORTAL_DATA = {
             "value": 94.9
           },
           {
-            "date": "11/23",
-            "value": 94.7
+            "date": "11/24",
+            "value": 96.4
           }
         ]
       },
@@ -1098,8 +1098,8 @@ window.PORTAL_DATA = {
             "value": 92.1
           },
           {
-            "date": "11/23",
-            "value": 92.2
+            "date": "11/24",
+            "value": 92.5
           }
         ]
       }
@@ -1107,44 +1107,44 @@ window.PORTAL_DATA = {
     "stats": [
       {
         "label": "沪深300",
-        "return_1y": -11.01,
-        "from_high": -21.77,
+        "return_1y": -10.89,
+        "from_high": -21.66,
         "mdd_1y": -21.84
       },
       {
         "label": "创业板指",
-        "return_1y": -22.15,
-        "from_high": -47.85,
+        "return_1y": -22.19,
+        "from_high": -47.87,
         "mdd_1y": -49.4
       },
       {
         "label": "科创50",
-        "return_1y": -5.3,
-        "from_high": -44.39,
+        "return_1y": -3.59,
+        "from_high": -43.38,
         "mdd_1y": -47.86
       },
       {
         "label": "上证指数",
-        "return_1y": -7.76,
-        "from_high": -16.58,
+        "return_1y": -7.52,
+        "from_high": -16.36,
         "mdd_1y": -16.71
       }
     ],
     "valuation": [
       {
         "label": "沪深300 PE",
-        "value": "13.71",
-        "date": "11/23"
+        "value": "13.75",
+        "date": "11/24"
       },
       {
         "label": "科创50 PE",
-        "value": "82.31",
-        "date": "11/23"
+        "value": "84.06",
+        "date": "11/24"
       },
       {
         "label": "中证500 PE",
-        "value": "24.01",
-        "date": "11/23"
+        "value": "23.92",
+        "date": "11/24"
       }
     ],
     "fundamentals": [
